@@ -1,7 +1,9 @@
-import React, { useState } from 'react'; //Always do this in every component!
+import React, { useState, useEffect } from 'react'; //Always do this in every component!
+
+//API
+import API from '../API';
 
 //Config
-
 import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL } from '../config';
 
 //Components
@@ -17,6 +19,25 @@ const Home = () => {
   const [state, setState] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+
+const fetchMovies = async (page, searchTerm) ="") => {
+  try {
+    setError(false);
+    setLoading(true);
+
+    const movies = await API.fetchMovies(searchTerm, page);
+    console.log(movies);
+
+  } catch (error) {
+    setError(true);
+  }
+
+}
+
+//Initial render
+useEffect(() =>{
+fetchMovies(1)
+},[])
 
   return <div>Home Page</div>;
 };
