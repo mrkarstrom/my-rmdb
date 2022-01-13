@@ -16,6 +16,9 @@ const Home = () => {
   //The name 'state' is arbitrary - then you add the set to the second parameter: setstate or whatever
   const [state, setState] = useState();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   return <div>Home Page</div>;
 };
+
+export default Home;
